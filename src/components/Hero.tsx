@@ -25,19 +25,19 @@ const HERO_SLIDES = [
   },
   {
     src: '/images/photo-01.jpg',
-    label: 'Illuminated Private Dock & Lakeside Fire Pit Circle',
+    label: 'Illuminated Private Dock & Lakeside Fire Pit',
   },
   {
-    src: '/images/photo-24.jpg',
-    label: 'Golden Hour Lake-View Hot Tub Looking Out to the Dock',
+    src: '/images/photo-67.jpg',
+    label: 'Covered Lake-View Hot Tub Looking Out to Big Lake',
   },
   {
     src: '/images/photo-06.jpg',
-    label: 'Vaulted Cedar Great Room & Floor-to-Ceiling River-Rock Hearth',
+    label: 'Vaulted Knotty Pine Great Room & River-Rock Hearth',
   },
   {
-    src: '/images/photo-55.jpg',
-    label: 'Private Dock + Included Kayaks, SUPs, Paddle Boat & Floating Mats',
+    src: '/images/photo-43.jpg',
+    label: 'Dual Dining Tables & Open Main Kitchen for 20 Guests',
   },
 ];
 
@@ -61,22 +61,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenGallery }) => {
   ];
 
   return (
-    <section className="relative min-h-[92vh] lg:min-h-screen flex items-end pb-12 sm:pb-16 pt-32 overflow-hidden bg-lodge-dark text-white">
+    <section className="relative min-h-[90vh] lg:min-h-screen flex items-end pb-12 sm:pb-16 pt-32 overflow-hidden bg-lodge-dark text-white">
       {/* Background Image Switcher */}
       <AnimatePresence mode="popLayout">
         <motion.img
           key={HERO_SLIDES[activeSlide].src}
           src={HERO_SLIDES[activeSlide].src}
           alt={HERO_SLIDES[activeSlide].label}
-          initial={{ opacity: 0, scale: 1.06 }}
+          initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.4, ease: 'easeOut' }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
       </AnimatePresence>
 
-      {/* Luxury Layered Scrims */}
+      {/* Layered Gradient Scrims */}
       <div className="absolute inset-0 bg-gradient-to-t from-lodge-dark via-lodge-dark/55 to-lodge-dark/35" />
       <div className="absolute inset-0 bg-gradient-to-r from-lodge-dark/80 via-lodge-dark/30 to-transparent" />
 
@@ -104,7 +104,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenGallery }) => {
             className="flex items-center gap-2 text-stone-200 text-xs sm:text-sm uppercase tracking-[0.22em] font-medium mb-3"
           >
             <MapPin className="w-4 h-4 text-cedar-light shrink-0" />
-            <span>Big Lake · Mount Vernon, WA (Heart of Skagit Valley)</span>
+            <span>Big Lake · Mount Vernon, WA (Skagit Valley)</span>
           </motion.div>
 
           {/* Main Editorial Title */}
@@ -116,20 +116,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenGallery }) => {
           >
             West View Lodge
             <span className="block font-normal italic text-3xl sm:text-4xl lg:text-5xl text-stone-200 mt-2">
-              A Private Pacific Northwest Lakefront Sanctuary for 20+
+              A Spacious Lakefront Retreat for 20+ on Big Lake
             </span>
           </motion.h1>
 
-          {/* Editorial Subcopy */}
+          {/* Warm, Concise Subcopy */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.22 }}
             className="mt-5 text-base sm:text-lg text-stone-200/95 max-w-2xl leading-relaxed font-light"
           >
-            Three expansive levels of cedar-and-stone craftsmanship right on the shores of Big Lake.
-            Featuring a private boat dock, complimentary watercraft fleet, two full kitchens, an
-            8-bed custom fish bunkroom, lake-view hot tub, and 14-chair waterfront fire pit.
+            Three welcoming levels right on the shores of Big Lake—with a private dock, included
+            watercraft, two full kitchens, an 8-bed custom fish-themed bunkroom, lake-view hot tub,
+            and lakeside fire pit.
           </motion.p>
 
           {/* Quick Stat Pills */}

@@ -42,7 +42,7 @@ export function App() {
         {/* 2. "Why Book Direct" Value Strip with Host Casey */}
         <WhyBookDirectStrip onOpenBooking={() => setBookingDrawerOpen(true)} />
 
-        {/* 3. The Big Lake Waterfront & Watercraft Fleet Showcase */}
+        {/* 3. The Big Lake Waterfront & Watercraft Showcase */}
         <WaterfrontShowcase onSelectPhoto={(src) => setExternalLightboxSrc(src)} />
 
         {/* 4. Interactive 3-Level Sleeping Floorplan */}

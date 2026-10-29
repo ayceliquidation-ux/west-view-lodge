@@ -8,7 +8,6 @@ import {
   Check,
   Copy,
   CheckCheck,
-  Sparkles,
   Eye,
   Users,
 } from 'lucide-react';
@@ -26,7 +25,7 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
     FLOORPLAN_LEVELS.find((lvl) => lvl.id === activeLevelId) || FLOORPLAN_LEVELS[0];
 
   const handleCopyRoomSheet = () => {
-    const summaryText = `WEST VIEW LODGE — 3-LEVEL SLEEPING FLOORPLAN (Sleeps 20+)\nBig Lake · Mount Vernon, WA (4,300 Sq. Ft. · 7 Bedrooms · 4 Baths)\n\n• UPPER LEVEL (Detached Full Spa Bath w/ Soaking Tub & Walk-In Shower):\n  - Primary Suite: King Bed, Roku TV, Lake Views, Walk-In Closet, Seating for 2 + Private Lake-View Office\n\n• MAIN LEVEL (Shares Full Bath):\n  - Bedroom 1: King Bed + Roku TV + Lake View + Luggage Racks\n  - Bedroom 2: King Bed + Roku TV + Lake View + Luggage Racks\n  - Bedroom 3: Queen Bed + Roku TV + Garden View + Luggage Racks\n\n• LOWER WALK-OUT LEVEL (Full Bath + 3/4 Bath):\n  - Bedroom 4: King Bed + Roku TV + Lake View + Luggage Racks\n  - Bedroom 5: Queen Bed + Roku TV + Lake View + Luggage Racks\n  - Bedroom 6 (Custom Fish Bunkroom): 8 Built-In Bunk Beds (each with its own reading light & fan!)\n\n• BONUS SLEEPING:\n  - Fold-Out Sofa in Gaming Nook, 1 Queen Air Mattress, 1 Twin Air Mattress, Pack 'n Play`;
+    const summaryText = `WEST VIEW LODGE — 3-LEVEL SLEEPING FLOORPLAN (Sleeps 20+)\nBig Lake · Mount Vernon, WA (4,300 Sq. Ft. · 7 Bedrooms · 4 Baths)\n\n• UPPER LEVEL (Detached Full Bath w/ Soaking Tub & Walk-In Shower):\n  - Primary Suite — The Heron’s Nest: King Bed, Roku TV, Lake Views, Walk-In Closet, Seating for 2 + Private Lake-View Office\n\n• MAIN LEVEL (Shares Main Level Full Bath):\n  - Bedroom 1: King Bed + Roku TV + Lake View + Luggage Racks\n  - Bedroom 2: King Bed + Roku TV + Lake View + Luggage Racks\n  - Bedroom 3: Queen Bed + Roku TV + Garden View + Luggage Racks\n\n• LOWER WALK-OUT LEVEL (Full Bath + 3/4 Bath):\n  - Bedroom 4: King Bed + Roku TV + Lake View + Luggage Racks\n  - Bedroom 5: Queen Bed + Roku TV + Lake View + Luggage Racks\n  - Bedroom 6 (Custom Fish-Themed Bunkroom): 8 Built-In Bunk Beds (each with its own reading light & fan!)\n\n• BONUS SLEEPING:\n  - Fold-Out Sofa in Gaming Nook, 1 Queen Air Mattress, 1 Twin Air Mattress, Pack 'n Play`;
 
     navigator.clipboard?.writeText(summaryText);
     setCopiedPlan(true);
@@ -34,22 +33,22 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
   };
 
   return (
-    <section id="floorplan" className="py-20 sm:py-28 bg-stone-100/80 border-y border-stone-200/80">
+    <section id="floorplan" className="py-20 sm:py-24 bg-stone-100/80 border-y border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-cedar-dark font-semibold mb-3">
               <Layers className="w-4 h-4 text-cedar" />
-              <span>Interactive 3-Level Sleeping Floorplan · Built for Reunion Organizers</span>
+              <span>3-Level Sleeping Floorplan · Built for Reunion Organizers</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-lodge tracking-tight leading-[1.1]">
-              7 Bedrooms Across 3 Levels — Thoughtfully Separated for Group Harmony
+              7 Bedrooms Across 3 Levels
             </h2>
-            <p className="mt-4 text-stone-600 text-base sm:text-lg leading-relaxed">
-              Assigning rooms for 20+ guests is effortless when everyone knows exactly which level
-              they’re on. Explore each floor below—from the private top-floor Primary Wing to the
-              lower-level 8-bed Custom Fish Bunkroom.
+            <p className="mt-3 text-stone-600 text-base sm:text-lg leading-relaxed">
+              Explore each floor below—from the private top-floor Primary Suite (
+              <em>The Heron’s Nest</em>) to the main-level and lower-level bedrooms and 8-bed
+              Custom Fish-Themed Bunkroom.
             </p>
           </div>
 
@@ -61,7 +60,7 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
             {copiedPlan ? (
               <>
                 <CheckCheck className="w-4 h-4 text-emerald-600" />
-                <span className="text-emerald-700">Copied Reunion Room Sheet to Clipboard!</span>
+                <span className="text-emerald-700">Copied Room Sheet to Clipboard!</span>
               </>
             ) : (
               <>
@@ -73,24 +72,24 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
         </div>
 
         {/* Quick Total Bed Count Summary Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8">
           <div className="bg-white rounded-2xl p-4 border border-stone-200/80">
             <span className="text-xs uppercase tracking-wider text-stone-500 font-semibold">
-              King Suites
+              King Bedrooms
             </span>
             <p className="font-serif text-2xl sm:text-3xl font-bold text-lodge mt-0.5">
               4 King Beds
             </p>
-            <span className="text-xs text-stone-600">All 4 with Panoramic Lake Views</span>
+            <span className="text-xs text-stone-600">Primary Suite + 3 Lake-View Bedrooms</span>
           </div>
           <div className="bg-white rounded-2xl p-4 border border-stone-200/80">
             <span className="text-xs uppercase tracking-wider text-stone-500 font-semibold">
-              Queen Suites
+              Queen Bedrooms
             </span>
             <p className="font-serif text-2xl sm:text-3xl font-bold text-lodge mt-0.5">
               2 Queen Beds
             </p>
-            <span className="text-xs text-stone-600">1 Lake View · 1 Quiet Garden View</span>
+            <span className="text-xs text-stone-600">1 Lake View · 1 Garden View</span>
           </div>
           <div className="bg-white rounded-2xl p-4 border border-stone-200/80">
             <span className="text-xs uppercase tracking-wider text-stone-500 font-semibold">
@@ -165,7 +164,7 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-sm mb-8">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-sm">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-stone-200">
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cedar-dark">
@@ -211,16 +210,16 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
                     className="group bg-alabaster rounded-2xl overflow-hidden border border-stone-200/90 flex flex-col justify-between hover:shadow-luxury transition-all duration-300"
                   >
                     <div>
-                      {/* Room Image + Optional Secondary Thumbnail */}
-                      <div className="relative h-60 overflow-hidden bg-stone-200">
+                      {/* Room Image + Optional Secondary Thumbnail — WebKit-safe explicit height */}
+                      <div className="relative h-60 shrink-0 overflow-hidden bg-stone-200">
                         <img
                           src={room.image}
                           alt={room.name}
                           loading="lazy"
                           onClick={() => onSelectPhoto(room.image)}
-                          className="w-full h-full object-cover cursor-pointer transition-transform duration-700 group-hover:scale-105"
+                          className="absolute inset-0 w-full h-full object-cover cursor-pointer transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                        <div className="absolute top-3 left-3 z-10 flex flex-wrap gap-1.5">
                           <span className="bg-lodge-dark/85 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1.5">
                             <BedDouble className="w-3.5 h-3.5 text-cedar-light" />
                             {room.bedType}
@@ -234,7 +233,7 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
                           <button
                             onClick={() => onSelectPhoto(room.secondaryImage!)}
                             title="View alternate angle"
-                            className="absolute bottom-3 right-3 w-16 h-12 rounded-lg overflow-hidden border-2 border-white shadow-lg hover:scale-105 transition-transform"
+                            className="absolute bottom-3 right-3 z-10 w-16 h-12 rounded-lg overflow-hidden border-2 border-white shadow-lg hover:scale-105 transition-transform"
                           >
                             <img
                               src={room.secondaryImage}
@@ -246,7 +245,7 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
                       </div>
 
                       {/* Room Details */}
-                      <div className="p-6">
+                      <div className="relative z-10 bg-alabaster p-6">
                         <div className="flex items-center justify-between gap-2 text-xs text-stone-500 font-medium">
                           <span>{room.subtitle}</span>
                           <span className="inline-flex items-center gap-1 text-cedar-dark font-semibold">
@@ -273,7 +272,7 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
                       </div>
                     </div>
 
-                    <div className="px-6 py-3.5 bg-stone-100 border-t border-stone-200/80 flex items-center justify-between text-xs text-stone-600">
+                    <div className="relative z-10 px-6 py-3.5 bg-stone-100 border-t border-stone-200/80 flex items-center justify-between text-xs text-stone-600">
                       <span className="inline-flex items-center gap-1.5">
                         <Tv className="w-3.5 h-3.5 text-cedar" />
                         <span>Smart TV &amp; Fresh Linens</span>
@@ -282,7 +281,7 @@ export const FloorplanSection: React.FC<FloorplanSectionProps> = ({ onSelectPhot
                         onClick={() => onSelectPhoto(room.image)}
                         className="font-semibold text-lodge hover:text-cedar-dark"
                       >
-                        Inspect Room Photo →
+                        Room Photo →
                       </button>
                     </div>
                   </div>

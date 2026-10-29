@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenGallery }) 
   }, []);
 
   const navLinks = [
-    { label: 'Waterfront & Fleet', href: '#waterfront' },
+    { label: 'Waterfront & Watercraft', href: '#waterfront' },
     { label: '3-Level Floorplan', href: '#floorplan' },
     { label: 'Built for 20+', href: '#group-living' },
     { label: '79 Photos', href: '#gallery' },
@@ -96,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenGallery }) 
             className="inline-flex items-center gap-2 bg-cedar hover:bg-cedar-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-cedar/25 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Calendar className="w-4 h-4" />
-            <span>Check Availability & Book Direct</span>
+            <span>Check Availability &amp; Book Direct</span>
           </button>
         </div>
 
@@ -125,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenGallery }) 
         <div className="xl:hidden bg-alabaster text-lodge border-b border-stone-200 shadow-2xl px-4 pt-4 pb-6 mt-3 space-y-3">
           <div className="flex items-center gap-2 text-xs font-semibold text-cedar-dark bg-cedar-subtle px-3 py-2 rounded-lg">
             <Sparkles className="w-4 h-4 text-cedar shrink-0" />
-            <span>Book Direct with Host Casey & Save ~14% vs. Airbnb Fees</span>
+            <span>Book Direct with Host Casey &amp; Save ~14% vs. Airbnb Fees</span>
           </div>
           <div className="grid grid-cols-2 gap-2 pt-1">
             {navLinks.map((link) => (
@@ -157,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenGallery }) 
               className="w-full py-3 rounded-xl bg-lodge text-white text-sm font-semibold flex items-center justify-center gap-2"
             >
               <Calendar className="w-4 h-4 text-cedar-light" />
-              <span>Check Availability & Book Direct</span>
+              <span>Check Availability &amp; Book Direct</span>
             </button>
           </div>
         </div>

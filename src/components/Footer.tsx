@@ -28,10 +28,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             </div>
 
             <p className="text-sm text-stone-400 max-w-md leading-relaxed">
-              An ultra-spacious 4,300 sq. ft. Pacific Northwest lakefront lodge in the heart of
-              Skagit Valley. Purpose-built for 20+ guests with a private dock, included watercraft
-              fleet, 7 bedrooms across 3 levels, two full kitchens, lake-view hot tub, and 14-chair
-              fire pit.
+              A 4,300 sq. ft. Pacific Northwest lakefront lodge in the heart of Skagit Valley.
+              Built for 20+ guests with a private dock, included watercraft, 7 bedrooms across 3
+              levels, two full kitchens, lake-view hot tub, and lakeside fire pit.
             </p>
 
             <div className="flex items-center gap-2 text-xs text-amber-200 font-medium pt-1">
@@ -46,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             <ul className="space-y-2 text-sm text-stone-400">
               <li>
                 <a href="#waterfront" className="hover:text-white transition-colors">
-                  Private Dock &amp; Watercraft Fleet
+                  Private Dock &amp; Included Watercraft
                 </a>
               </li>
               <li>

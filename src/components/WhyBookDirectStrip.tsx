@@ -13,28 +13,28 @@ export const WhyBookDirectStrip: React.FC<WhyBookDirectStripProps> = ({ onOpenBo
       title: 'Zero Airbnb Service Fees',
       subtitle: 'Save $350–$600+ on Group Stays',
       description:
-        'Skip the ~14% third-party platform booking markups. Put those savings toward a private dinner, boat fuel, or Skagit Valley wine tasting.',
+        'Skip the ~14% third-party booking fee and keep more of your budget for group meals and lake adventures.',
     },
     {
       icon: RefreshCw,
       title: 'Real-Time Hospitable Sync',
       subtitle: 'Live Seasonal Rates & Calendar',
       description:
-        'Our calendar and seasonal rates are synced 24/7 via Hospitable across all channels—eliminating double-bookings and guaranteeing accurate dates.',
+        'Our availability and seasonal rates sync automatically via Hospitable so dates are always accurate.',
     },
     {
       icon: MessageSquareHeart,
       title: 'Direct Access to Host Casey',
-      subtitle: 'Personal Reunion & Arrival Planning',
+      subtitle: 'Personal Stay & Arrival Planning',
       description:
-        'Communicate directly with owner Casey for boat moorage questions, floorplan room assignments, and local Big Lake recommendations.',
+        'Connect directly with Casey for boat moorage questions, bedroom planning, and local tips.',
     },
     {
       icon: ShieldCheck,
       title: 'Protected Direct Checkout',
-      subtitle: 'Encrypted Payment & Clear Terms',
+      subtitle: 'Clear Terms & Secure Payment',
       description:
-        'Enjoy transparent live seasonal pricing, instant booking confirmation, and bank-grade encrypted checkout powered by Hospitable Direct.',
+        'Transparent pricing, instant confirmation, and encrypted checkout powered by Hospitable Direct.',
     },
   ];
 
@@ -62,12 +62,12 @@ export const WhyBookDirectStrip: React.FC<WhyBookDirectStripProps> = ({ onOpenBo
                   <span>Official Direct Booking Website · Hosted by {bookingConfig.hostName}</span>
                 </div>
                 <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-white">
-                  “Welcome to our family’s lakeside sanctuary on Big Lake.”
+                  “Welcome to our family’s lakefront home on Big Lake.”
                 </h2>
                 <p className="text-stone-300 text-sm sm:text-base mt-1.5 leading-relaxed">
-                  When you book directly here on our official website, you get our exact same
-                  Hospitable live seasonal rates, stocked lodge essentials, and 5-star preparation—without
-                  paying $350 to $600+ in extra Airbnb guest service fees.
+                  Booking directly on our website gives your group the exact same live seasonal
+                  rates, stocked lodge starters, and personal care—without paying $350 to $600+ in
+                  extra Airbnb service fees.
                 </p>
               </div>
             </div>
@@ -126,7 +126,7 @@ export const WhyBookDirectStrip: React.FC<WhyBookDirectStripProps> = ({ onOpenBo
                 <p className="text-xs uppercase tracking-wider text-cedar-light font-semibold">
                   {perk.subtitle}
                 </p>
-                <h3 className="font-serif text-2xl font-semibold text-white mt-1">
+                <h3 className="font-serif text-xl font-semibold text-white mt-1">
                   {perk.title}
                 </h3>
                 <p className="text-sm text-stone-300 mt-2 leading-relaxed">

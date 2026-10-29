@@ -11,7 +11,6 @@ import {
 import { HOUSE_ESSENTIALS_ACCORDION } from '../data/propertyData';
 
 export const PoliciesAccordion: React.FC = () => {
-  // Keep all 3 open by default or toggleable so guests can see everything transparently
   const [openIds, setOpenIds] = useState<string[]>([
     'stocked-starters',
     'guest-access',
@@ -38,20 +37,20 @@ export const PoliciesAccordion: React.FC = () => {
   };
 
   return (
-    <section id="essentials" className="py-20 sm:py-28 bg-stone-100/90 border-t border-stone-200/80">
+    <section id="essentials" className="py-20 sm:py-24 bg-stone-100/90 border-t border-stone-200/80">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-cedar-dark font-semibold mb-3">
             <PackageCheck className="w-4 h-4 text-cedar" />
-            <span>Radical Transparency · Stocked Starters &amp; House Rules</span>
+            <span>Stocked Starters &amp; House Policies</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-lodge tracking-tight">
-            Everything Stocked for Arrival &amp; Clear House Policies
+            Everything Stocked for Arrival &amp; Clear House Rules
           </h2>
           <p className="mt-3 text-stone-600 text-base sm:text-lg">
-            We believe great group stays begin with zero surprises. Here is exactly what is stocked
-            in the kitchens and baths when you arrive, along with our straightforward house rules.
+            Here is what is stocked in the kitchens and baths when you arrive, along with our
+            straightforward house policies.
           </p>
         </div>
 
@@ -91,7 +90,7 @@ export const PoliciesAccordion: React.FC = () => {
                   </div>
 
                   <div
-                    className={`w-9 h-9 rounded-full bg-stone-100 flex items-center justify-center text-stone-600 transition-transform duration-300 ${
+                    className={`w-9 h-9 rounded-full bg-stone-100 flex items-center justify-center text-stone-600 transition-transform duration-300 shrink-0 ${
                       isOpen ? 'rotate-180 bg-cedar-subtle text-cedar-dark' : ''
                     }`}
                   >

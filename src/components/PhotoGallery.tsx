@@ -82,21 +82,20 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
       : null;
 
   return (
-    <section id="gallery" className="py-20 sm:py-28 bg-stone-100/90 border-t border-stone-200/80">
+    <section id="gallery" className="py-20 sm:py-24 bg-stone-100/90 border-t border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-cedar-dark font-semibold mb-3">
               <Camera className="w-4 h-4 text-cedar" />
-              <span>Complete Visual Tour · 100% Verified Local Assets</span>
+              <span>Photo Tour · 79 Property &amp; Local Photos</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-lodge tracking-tight leading-[1.1]">
-              Curated 79-Photo Tour of West View Lodge
+              Explore Every Corner of West View Lodge
             </h2>
             <p className="mt-3 text-stone-600 text-base sm:text-lg">
-              Inspect every suite, bath, kitchen, deck, dock angle, and local Big Lake landmark.
-              Click any photograph to open the full-screen keyboard-navigable lightbox.
+              Filter by category or click any photo to open the full-screen slideshow.
             </p>
           </div>
 
@@ -109,7 +108,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
               className="inline-flex items-center gap-2 bg-lodge hover:bg-lodge-light text-white text-xs sm:text-sm font-semibold px-5 py-3 rounded-full shadow transition-all"
             >
               <Maximize2 className="w-4 h-4 text-cedar-light" />
-              <span>Launch Full-Screen 79-Photo Slideshow</span>
+              <span>Open Full-Screen 79-Photo Slideshow</span>
             </button>
           </div>
         </div>
@@ -154,39 +153,39 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
               <span>
                 {showAllGrid
                   ? 'Show Featured 24 Photos in Grid'
-                  : 'Expand All 79 Photos Simultaneously in Grid'}
+                  : 'Expand All 79 Photos in Grid'}
               </span>
             </button>
           )}
         </div>
 
-        {/* Photo Grid */}
+        {/* Photo Grid — WebKit-safe explicit heights + absolute inset-0 images */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {visiblePhotos.map((photo, index) => (
             <div
               key={photo.id}
               onClick={() => setLightboxIndex(index)}
-              className={`group relative rounded-2xl overflow-hidden bg-stone-200 border border-stone-200/80 cursor-pointer shadow-sm hover:shadow-luxury transition-all duration-300 ${
-                index % 7 === 0 ? 'sm:col-span-2 sm:row-span-2 min-h-[280px] sm:min-h-[380px]' : 'h-60'
-              }`}
+              className="group relative h-64 sm:h-60 rounded-2xl overflow-hidden bg-stone-200 border border-stone-200/80 cursor-pointer shadow-sm hover:shadow-luxury transition-all duration-300 flex flex-col justify-between p-3.5"
             >
               <img
                 src={photo.src}
                 alt={photo.title}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent opacity-85 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              <span className="absolute top-3 left-3 bg-black/55 backdrop-blur-md text-white/90 text-[11px] font-medium px-2.5 py-0.5 rounded-full">
-                #{String(photo.id).padStart(2, '0')}
-              </span>
+              <div className="relative z-10 flex justify-start">
+                <span className="bg-black/55 backdrop-blur-md text-white/90 text-[11px] font-medium px-2.5 py-0.5 rounded-full">
+                  #{String(photo.id).padStart(2, '0')}
+                </span>
+              </div>
 
-              <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
+              <div className="relative z-10 text-white pt-6">
                 <p className="font-serif text-base sm:text-lg font-semibold leading-snug">
                   {photo.title}
                 </p>
-                <p className="text-xs text-stone-200 line-clamp-1 mt-0.5">{photo.caption}</p>
+                <p className="text-xs text-stone-200 line-clamp-2 mt-0.5">{photo.caption}</p>
               </div>
             </div>
           ))}
@@ -200,7 +199,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
               className="inline-flex items-center gap-2.5 bg-white hover:bg-lodge hover:text-white text-lodge border border-stone-300 font-semibold px-7 py-4 rounded-full text-sm shadow-sm transition-all duration-300"
             >
               <Sparkles className="w-4 h-4 text-cedar" />
-              <span>Display All 79 Property &amp; Local Photos in Grid (+55 More)</span>
+              <span>Show All 79 Photos in Grid (+55 More)</span>
             </button>
           </div>
         )}
@@ -221,7 +220,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
                 Photo {lightboxIndex + 1} of {filteredPhotos.length}
               </span>
               <span className="text-xs sm:text-sm text-stone-300 hidden sm:inline">
-                {currentLightboxPhoto.title} (Asset #{String(currentLightboxPhoto.id).padStart(2, '0')})
+                {currentLightboxPhoto.title} (Photo #{String(currentLightboxPhoto.id).padStart(2, '0')})
               </span>
             </div>
 
@@ -252,7 +251,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
             <img
               src={currentLightboxPhoto.src}
               alt={currentLightboxPhoto.title}
-              className="max-h-[72vh] max-w-[88vw] object-contain rounded-xl shadow-2xl"
+              className="max-h-[70vh] max-w-[88vw] object-contain rounded-xl shadow-2xl"
             />
 
             <button
@@ -264,7 +263,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
             </button>
           </div>
 
-          {/* Bottom Caption & Thumbnail Strip */}
+          {/* Bottom Caption & Navigation */}
           <div className="border-t border-white/10 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 max-w-5xl mx-auto w-full">
             <div>
               <h4 className="font-serif text-xl sm:text-2xl font-semibold text-white">
