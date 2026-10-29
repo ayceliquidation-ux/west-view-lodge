@@ -11,10 +11,10 @@ export interface LodgePhoto {
 }
 
 export const PHOTO_CATEGORIES: { id: 'all' | PhotoCategory; label: string; count: number }[] = [
-  { id: 'all', label: 'All 79 Photos', count: 79 },
+  { id: 'all', label: 'All 80 Photos', count: 80 },
   { id: 'waterfront', label: 'Lakefront & Outdoor', count: 18 },
   { id: 'living', label: 'Living, Kitchens & Games', count: 35 },
-  { id: 'bedrooms', label: 'Bedrooms, Bunkroom & Baths', count: 20 },
+  { id: 'bedrooms', label: 'Bedrooms, Bunkroom & Baths', count: 21 },
   { id: 'local', label: 'Around Big Lake', count: 6 },
 ];
 
@@ -124,11 +124,19 @@ export const LODGE_PHOTOS: LodgePhoto[] = [
     caption: 'Warm natural light, Queen bed, reading armchair, Roku TV, and luggage racks.',
   },
   {
+    id: 80,
+    src: '/images/photo-80.jpg',
+    category: 'bedrooms',
+    title: 'Lower Level Lake-View King Bedroom (Bedroom 4)',
+    caption: 'Lake-view king bedroom on the lower level featuring framed feather artwork, knotty pine wainscot detailing, warm bedside lighting, and a wide lakefront window.',
+    featured: true,
+  },
+  {
     id: 14,
     src: '/images/photo-14.jpg',
     category: 'bedrooms',
-    title: 'Lower Level Lake-View King Bedroom (Bedroom 4)',
-    caption: 'Knotty pine wainscot detailing, wide lakefront window, King bed, Roku TV, and luggage racks.',
+    title: 'Lower Level Lake-View Queen Bedroom (Bedroom 5)',
+    caption: 'Knotty pine wainscot detailing, wide lakefront window, Queen bed, Roku TV, and luggage racks (pairs with #49).',
   },
   {
     id: 15,
@@ -387,7 +395,7 @@ export const LODGE_PHOTOS: LodgePhoto[] = [
     src: '/images/photo-49.jpg',
     category: 'bedrooms',
     title: 'Lower Level Lake-View Queen Bedroom (Bedroom 5)',
-    caption: 'Queen bedroom with Roku TV, lake views, luggage racks, and privacy curtain to the bunkroom.',
+    caption: 'Second angle of the Lower Level Queen bedroom showing the mirrored closet and double-layered privacy curtain to the bunkroom (pairs with #14).',
   },
   {
     id: 50,

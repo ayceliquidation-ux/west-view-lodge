@@ -89,7 +89,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-cedar-dark font-semibold mb-3">
               <Camera className="w-4 h-4 text-cedar" />
-              <span>Photo Tour · 79 Property &amp; Local Photos</span>
+              <span>Photo Tour · 80 Property &amp; Local Photos</span>
             </div>
             <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-lodge tracking-tight leading-[1.1]">
               Explore Every Corner of West View Lodge
@@ -108,7 +108,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
               className="inline-flex items-center gap-2 bg-lodge hover:bg-lodge-light text-white text-xs sm:text-sm font-semibold px-5 py-3 rounded-full shadow transition-all"
             >
               <Maximize2 className="w-4 h-4 text-cedar-light" />
-              <span>Open Full-Screen 79-Photo Slideshow</span>
+              <span>Open Full-Screen 80-Photo Slideshow</span>
             </button>
           </div>
         </div>
@@ -153,7 +153,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
               <span>
                 {showAllGrid
                   ? 'Show Featured 24 Photos in Grid'
-                  : 'Expand All 79 Photos in Grid'}
+                  : 'Expand All 80 Photos in Grid'}
               </span>
             </button>
           )}
@@ -199,7 +199,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
               className="inline-flex items-center gap-2.5 bg-white hover:bg-lodge hover:text-white text-lodge border border-stone-300 font-semibold px-7 py-4 rounded-full text-sm shadow-sm transition-all duration-300"
             >
               <Sparkles className="w-4 h-4 text-cedar" />
-              <span>Show All 79 Photos in Grid (+55 More)</span>
+              <span>Show All 80 Photos in Grid (+56 More)</span>
             </button>
           </div>
         )}

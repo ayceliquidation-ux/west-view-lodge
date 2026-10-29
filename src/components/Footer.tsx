@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
               </li>
               <li>
                 <a href="#gallery" className="hover:text-white transition-colors">
-                  Complete 79-Photo Tour
+                  Complete 80-Photo Tour
                 </a>
               </li>
               <li>

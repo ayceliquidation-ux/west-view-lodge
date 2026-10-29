@@ -22,7 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenGallery }) 
     { label: 'Waterfront & Watercraft', href: '#waterfront' },
     { label: '3-Level Floorplan', href: '#floorplan' },
     { label: 'Built for 20+', href: '#group-living' },
-    { label: '79 Photos', href: '#gallery' },
+    { label: '80 Photos', href: '#gallery' },
     { label: 'Skagit Valley', href: '#local-guide' },
     { label: 'Essentials & Rules', href: '#essentials' },
   ];
@@ -147,7 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenGallery }) 
               }}
               className="w-full py-2.5 rounded-xl border border-stone-300 text-sm font-semibold text-lodge"
             >
-              Browse All 79 Property Photos
+              Browse All 80 Property Photos
             </button>
             <button
               onClick={() => {

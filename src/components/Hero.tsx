@@ -173,7 +173,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenGallery }) => {
               className="inline-flex items-center justify-center gap-2.5 bg-white/12 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white font-medium px-6 py-4 rounded-full text-base transition-all duration-300"
             >
               <Images className="w-5 h-5 text-cedar-light" />
-              <span>Explore All 79 Photos</span>
+              <span>Explore All 80 Photos</span>
             </button>
           </motion.div>
         </div>
