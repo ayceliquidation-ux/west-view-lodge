@@ -9,6 +9,7 @@ import {
   SlidersHorizontal,
   Code2,
   Percent,
+  Mail,
 } from 'lucide-react';
 import { bookingConfig, isHospitableLive, BookingMode } from '../config/bookingConfig';
 
@@ -94,9 +95,66 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
     };
   }, [checkIn, checkOut]);
 
+  const mailtoHref = useMemo(() => {
+    const subject = encodeURIComponent(
+      `West View Lodge Inquiry: ${checkIn} to ${checkOut} (${guests} Guests)`
+    );
+    const body = encodeURIComponent(
+      [
+        `Hi Casey,`,
+        ``,
+        `I would like to inquire about West View Lodge on Big Lake:`,
+        `- Check-In: ${checkIn}`,
+        `- Check-Out: ${checkOut} (${staySummary.nights} Nights)`,
+        `- Guests: ${guests}`,
+        `- Group Occasion: ${occasion}`,
+        fullName ? `- Name: ${fullName}` : '',
+        email ? `- Email: ${email}` : '',
+        phone ? `- Phone: ${phone}` : '',
+        message ? `\nQuestions / Notes:\n${message}` : '',
+      ]
+        .filter(Boolean)
+        .join('\n')
+    );
+    return `mailto:${bookingConfig.hostEmail}?subject=${subject}&body=${body}`;
+  }, [checkIn, checkOut, guests, staySummary.nights, occasion, fullName, email, phone, message]);
+
   const handleInquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+
+    let deliveredViaAjax = false;
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${bookingConfig.hostEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `West View Lodge Direct Inquiry: ${checkIn} to ${checkOut} (${guests} Guests)`,
+          fullName,
+          email,
+          phone,
+          checkIn,
+          checkOut,
+          nights: staySummary.nights,
+          guests,
+          occasion,
+          message: message || '(No additional notes)',
+          estimatedSavings: `Save ~${staySummary.feeSavingsPercent}% (${staySummary.typicalSavingsRange} vs. OTA fees)`,
+        }),
+      });
+      if (response.ok) {
+        const result = await response.json().catch(() => null);
+        if (result && (result.success === 'true' || result.success === true)) {
+          deliveredViaAjax = true;
+        }
+      }
+    } catch {
+      // Fallback handled below
+    }
 
     try {
       await fetch('/', {
@@ -105,8 +163,13 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
         body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
       });
     } catch {
-      // In local dev without Netlify backend, gracefully complete the inquiry confirmation
+      // Ignore Netlify local/non-form errors
     }
+
+    if (!deliveredViaAjax) {
+      window.location.href = mailtoHref;
+    }
+
     setSubmitted(true);
   };
 
@@ -129,7 +192,16 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
                 Save ~{staySummary.feeSavingsPercent}%
               </span>
             </div>
-            <p className="text-xs text-stone-500">{bookingConfig.responseTimeText}</p>
+            <p className="text-xs text-stone-500 flex flex-wrap items-center gap-x-2 gap-y-0.5">
+              <span>{bookingConfig.responseTimeText}</span>
+              <span>·</span>
+              <a
+                href={`mailto:${bookingConfig.hostEmail}`}
+                className="text-cedar-dark hover:text-lodge font-medium underline underline-offset-2"
+              >
+                {bookingConfig.hostEmail}
+              </a>
+            </p>
           </div>
         </div>
 
@@ -181,7 +253,13 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
                 <div className="mt-6 pt-5 border-t border-stone-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500">
                   <span>
                     Have a question for Host {bookingConfig.hostName} before booking (boat moorage,
-                    room layout, or special requests)?
+                    room layout, or special requests)? Email{' '}
+                    <a
+                      href={`mailto:${bookingConfig.hostEmail}`}
+                      className="text-cedar-dark hover:text-lodge font-semibold underline underline-offset-2"
+                    >
+                      {bookingConfig.hostEmail}
+                    </a>
                   </span>
                   <button
                     type="button"
@@ -568,8 +646,15 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
                 </button>
 
                 <p className="text-[11px] text-stone-500 text-center">
-                  No credit card required to inquire. Host Casey will verify your dates and send a
-                  secure Hospitable Direct checkout link with $0 guest service fees.
+                  Sent directly to Host {bookingConfig.hostName} at{' '}
+                  <a
+                    href={mailtoHref}
+                    className="inline-flex items-center gap-1 text-cedar-dark hover:text-lodge font-semibold underline underline-offset-2"
+                  >
+                    <Mail className="w-3 h-3" />
+                    <span>{bookingConfig.hostEmail}</span>
+                  </a>
+                  .
                 </p>
               </form>
             )}

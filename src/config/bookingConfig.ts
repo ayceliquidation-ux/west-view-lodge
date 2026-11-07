@@ -85,6 +85,7 @@ export interface BookingConfig {
    */
   airbnbListingUrl: string;
   hostName: string;
+  hostEmail: string;
   hostTitle: string;
   responseTimeText: string;
 }
@@ -113,6 +114,7 @@ export const bookingConfig: BookingConfig = {
 
   airbnbListingUrl: 'https://www.airbnb.com/rooms/1760984114398559371',
   hostName: 'Casey',
+  hostEmail: 'westviewlodgevacation@gmail.com',
   hostTitle: 'Owner & Dedicated Big Lake Host',
   responseTimeText: 'Typically responds within 1 hour',
 };

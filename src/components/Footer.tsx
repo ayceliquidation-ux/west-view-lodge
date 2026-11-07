@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, MapPin, Calendar, ExternalLink, Sparkles, Anchor } from 'lucide-react';
+import { Compass, MapPin, Calendar, ExternalLink, Sparkles, Anchor, Mail } from 'lucide-react';
 import { bookingConfig } from '../config/bookingConfig';
 
 interface FooterProps {
@@ -36,6 +36,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             <div className="flex items-center gap-2 text-xs text-amber-200 font-medium pt-1">
               <MapPin className="w-4 h-4 text-cedar-light shrink-0" />
               <span>Big Lake Shoreline · Mount Vernon, WA (Skagit County)</span>
+            </div>
+
+            <div className="flex items-center gap-2 text-xs text-stone-300 font-medium">
+              <Mail className="w-4 h-4 text-cedar-light shrink-0" />
+              <a
+                href={`mailto:${bookingConfig.hostEmail}`}
+                className="hover:text-white underline underline-offset-4 transition-colors"
+              >
+                {bookingConfig.hostEmail}
+              </a>
             </div>
           </div>
 
@@ -94,9 +104,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                   </span>
                 </div>
               </div>
-              <p className="text-xs text-stone-300 leading-relaxed mb-4">
+              <p className="text-xs text-stone-300 leading-relaxed mb-3">
                 Skip the ~14% Airbnb service fee markup by booking directly here. Two-way synced
                 calendar via Hospitable Direct.
+              </p>
+              <p className="text-xs text-stone-300 mb-4">
+                Questions? Email{' '}
+                <a
+                  href={`mailto:${bookingConfig.hostEmail}`}
+                  className="text-amber-200 hover:text-white font-semibold underline underline-offset-2 transition-colors"
+                >
+                  {bookingConfig.hostEmail}
+                </a>
               </p>
               <button
                 onClick={onOpenBooking}
