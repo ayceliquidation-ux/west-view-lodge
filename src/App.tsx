@@ -80,7 +80,7 @@ export function App() {
               </p>
             </div>
 
-            <DirectBookingEngine />
+            <DirectBookingEngine suspendWidget={bookingDrawerOpen} />
           </div>
         </section>
       </main>
@@ -127,7 +127,7 @@ export function App() {
                     West View Lodge · Big Lake, WA
                   </span>
                   <h3 className="font-serif text-2xl font-semibold">
-                    Direct Availability &amp; Fee-Savings Calculator
+                    Live Availability &amp; Direct Booking
                   </h3>
                 </div>
                 <button

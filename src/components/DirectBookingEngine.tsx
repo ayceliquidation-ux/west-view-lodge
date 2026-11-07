@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
   Calendar,
   Sparkles,
@@ -14,13 +14,17 @@ import { bookingConfig, isHospitableLive, BookingMode } from '../config/bookingC
 
 interface DirectBookingEngineProps {
   isDrawer?: boolean;
+  suspendWidget?: boolean;
   onCloseDrawer?: () => void;
 }
 
 export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
   isDrawer = false,
+  suspendWidget = false,
   onCloseDrawer,
 }) => {
+  const widgetContainerRef = useRef<HTMLDivElement | null>(null);
+
   // Default dates: 21 days from today for 4 nights
   const defaultDates = useMemo(() => {
     const start = new Date();
@@ -47,20 +51,32 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  // Dynamically load Hospitable widget script when in hospitable mode and script src exists
+  // Dynamically mount the exact Hospitable widget script tag inside widgetContainerRef
   useEffect(() => {
-    if (effectiveMode === 'hospitable' && bookingConfig.hospitableWidgetScriptSrc.trim()) {
-      const existing = document.querySelector(
-        `script[src="${bookingConfig.hospitableWidgetScriptSrc}"]`
-      );
-      if (!existing) {
-        const script = document.createElement('script');
-        script.src = bookingConfig.hospitableWidgetScriptSrc;
-        script.async = true;
-        document.body.appendChild(script);
-      }
+    if (effectiveMode !== 'hospitable' || suspendWidget) return;
+    const container = widgetContainerRef.current;
+    if (!container || !bookingConfig.hospitableWidgetScriptSrc.trim()) return;
+
+    container.innerHTML = '';
+
+    const script = document.createElement('script');
+    script.src = bookingConfig.hospitableWidgetScriptSrc.trim();
+    if (bookingConfig.hospitableSiteUuid.trim()) {
+      script.setAttribute('data-site-uuid', bookingConfig.hospitableSiteUuid.trim());
     }
-  }, [effectiveMode]);
+    if (bookingConfig.hospitablePropertyId.trim()) {
+      script.setAttribute('data-property-id', bookingConfig.hospitablePropertyId.trim());
+    }
+    if (bookingConfig.hospitableTheme.trim()) {
+      script.setAttribute('data-theme', bookingConfig.hospitableTheme.trim());
+    }
+
+    container.appendChild(script);
+
+    return () => {
+      container.innerHTML = '';
+    };
+  }, [effectiveMode, suspendWidget]);
 
   // Calculate selected nights and percentage-based fee savings (no fake nightly rates)
   const staySummary = useMemo(() => {
@@ -117,19 +133,20 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
           </div>
         </div>
 
-        {/* Owner Preview Toggle between Inquiry & Hospitable Embed Mode */}
+        {/* Toggle between Live Hospitable Checkout & Direct Inquiry Form */}
         <button
           type="button"
           onClick={() =>
             setPreviewModeOverride(effectiveMode === 'inquiry' ? 'hospitable' : 'inquiry')
           }
           className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-stone-600 hover:text-lodge bg-stone-100 hover:bg-stone-200/80 px-3 py-1.5 rounded-full border border-stone-200 transition-colors"
-          title="Toggle preview between Inquiry Mode and Hospitable Direct Widget Mode"
+          title="Switch between Live Hospitable Direct Checkout and Direct Inquiry Form"
         >
           <SlidersHorizontal className="w-3.5 h-3.5 text-cedar" />
           <span>
-            Mode: {effectiveMode === 'hospitable' ? 'Hospitable Widget' : 'Direct Inquiry + Savings'}{' '}
-            (Switch Preview)
+            {effectiveMode === 'hospitable'
+              ? 'Have a Question? Send Direct Inquiry'
+              : 'Switch to Instant Book Widget'}
           </span>
         </button>
       </div>
@@ -154,8 +171,28 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
           </div>
 
           {/* Official Hospitable Self-Hosted Direct Booking Widget Container */}
-          <div className="hospitable-widget-wrapper min-h-[320px] flex flex-col justify-center">
-            {bookingConfig.hospitableIframeUrl.trim() ? (
+          <div className="hospitable-widget-wrapper min-h-[240px] flex flex-col justify-center">
+            {bookingConfig.hospitableWidgetScriptSrc.trim() ? (
+              <div className="w-full">
+                <div
+                  ref={widgetContainerRef}
+                  className="hospitable-direct-widget-mount w-full min-h-[160px] flex flex-col items-center justify-center"
+                />
+                <div className="mt-6 pt-5 border-t border-stone-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500">
+                  <span>
+                    Have a question for Host {bookingConfig.hostName} before booking (boat moorage,
+                    room layout, or special requests)?
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setPreviewModeOverride('inquiry')}
+                    className="text-cedar-dark hover:text-lodge font-semibold underline underline-offset-4 shrink-0"
+                  >
+                    Send a Direct Inquiry Message →
+                  </button>
+                </div>
+              </div>
+            ) : bookingConfig.hospitableIframeUrl.trim() ? (
               <iframe
                 src={bookingConfig.hospitableIframeUrl}
                 title="West View Lodge Hospitable Direct Booking"
@@ -185,9 +222,7 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
                   <code className="text-xs bg-stone-200/80 px-1.5 py-0.5 rounded">
                     src/config/bookingConfig.ts
                   </code>
-                  . As soon as Host Casey pastes her Hospitable script URL or direct booking URL
-                  into that single config file, live seasonal rates and instant checkout render
-                  right here automatically!
+                  .
                 </p>
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                   <button

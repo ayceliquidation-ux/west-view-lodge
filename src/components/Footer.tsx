@@ -122,7 +122,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
           <div className="flex items-center gap-5">
             <span className="inline-flex items-center gap-1 text-amber-200/90">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Hospitable Direct Ready</span>
+              <span>Powered by Hospitable Direct</span>
             </span>
             <a
               href={bookingConfig.airbnbListingUrl}

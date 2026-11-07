@@ -38,17 +38,27 @@ export interface BookingConfig {
 
   /**
    * Option A: Official Hospitable Self-Hosted Direct Booking Widget Script URL
-   * Example: "https://w.hospitable.com/widget.js"
+   * Example: "https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js"
    */
   hospitableWidgetScriptSrc: string;
 
   /**
-   * Option A: Hospitable Property / Widget Identifier for `<div class="hospitable-direct-widget" data-property-id="...">`
+   * Option A: Hospitable Direct Booking Site UUID (`data-site-uuid`)
+   */
+  hospitableSiteUuid: string;
+
+  /**
+   * Option A: Hospitable Property Identifier (`data-property-id`)
    */
   hospitablePropertyId: string;
 
   /**
-   * Option A: Optional custom HTML snippet if Hospitable provides a raw embed `<script>...`
+   * Option A: Hospitable Widget Theme (`data-theme`)
+   */
+  hospitableTheme: string;
+
+  /**
+   * Option A: Exact raw HTML script snippet for reference or custom embeds
    */
   hospitableCustomEmbedHtml: string;
 
@@ -80,13 +90,17 @@ export interface BookingConfig {
 }
 
 export const bookingConfig: BookingConfig = {
-  mode: 'inquiry',
+  mode: 'hospitable',
   autoSwitchWhenConfigured: true,
 
-  // Paste Hospitable Direct details here tomorrow:
-  hospitableWidgetScriptSrc: '',
-  hospitablePropertyId: '',
-  hospitableCustomEmbedHtml: '',
+  // Live Hospitable Direct Booking Widget Configuration:
+  hospitableWidgetScriptSrc:
+    'https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js',
+  hospitableSiteUuid: 'a32a08d8-459c-43d2-ad01-c71385cf5fc2',
+  hospitablePropertyId: '2484575',
+  hospitableTheme: 'multi',
+  hospitableCustomEmbedHtml:
+    '<script src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js" data-site-uuid="a32a08d8-459c-43d2-ad01-c71385cf5fc2" data-property-id="2484575" data-theme="multi"></script>',
   hospitableIframeUrl: '',
 
   bookingSettings: {
