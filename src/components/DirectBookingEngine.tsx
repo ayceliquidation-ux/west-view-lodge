@@ -52,26 +52,47 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  // Dynamically mount the exact Hospitable widget script tag inside widgetContainerRef
+  // Adopt the pre-mounted #hospitable-widget-verification container from index.html (or mount fresh script)
   useEffect(() => {
     if (effectiveMode !== 'hospitable' || suspendWidget) return;
     const container = widgetContainerRef.current;
     if (!container || !bookingConfig.hospitableWidgetScriptSrc.trim()) return;
 
-    container.innerHTML = '';
+    const preMounted = document.getElementById('hospitable-widget-verification');
 
+    if (preMounted) {
+      preMounted.removeAttribute('style');
+      preMounted.removeAttribute('aria-hidden');
+      preMounted.className = 'w-full';
+      container.appendChild(preMounted);
+
+      // If widget-loader hasn't injected widget DOM nodes beyond the <script> tag yet, trigger a fresh script execution
+      if (preMounted.children.length <= 1) {
+        const freshScript = document.createElement('script');
+        freshScript.src = bookingConfig.hospitableWidgetScriptSrc.trim();
+        freshScript.setAttribute('data-site-uuid', bookingConfig.hospitableSiteUuid.trim());
+        freshScript.setAttribute('data-property-id', bookingConfig.hospitablePropertyId.trim());
+        freshScript.setAttribute('data-theme', bookingConfig.hospitableTheme.trim());
+        preMounted.innerHTML = '';
+        preMounted.appendChild(freshScript);
+      }
+
+      return () => {
+        preMounted.setAttribute('aria-hidden', 'true');
+        preMounted.setAttribute(
+          'style',
+          'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;'
+        );
+        document.body.appendChild(preMounted);
+      };
+    }
+
+    container.innerHTML = '';
     const script = document.createElement('script');
     script.src = bookingConfig.hospitableWidgetScriptSrc.trim();
-    if (bookingConfig.hospitableSiteUuid.trim()) {
-      script.setAttribute('data-site-uuid', bookingConfig.hospitableSiteUuid.trim());
-    }
-    if (bookingConfig.hospitablePropertyId.trim()) {
-      script.setAttribute('data-property-id', bookingConfig.hospitablePropertyId.trim());
-    }
-    if (bookingConfig.hospitableTheme.trim()) {
-      script.setAttribute('data-theme', bookingConfig.hospitableTheme.trim());
-    }
-
+    script.setAttribute('data-site-uuid', bookingConfig.hospitableSiteUuid.trim());
+    script.setAttribute('data-property-id', bookingConfig.hospitablePropertyId.trim());
+    script.setAttribute('data-theme', bookingConfig.hospitableTheme.trim());
     container.appendChild(script);
 
     return () => {
@@ -246,15 +267,6 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
           <div className="hospitable-widget-wrapper min-h-[240px] flex flex-col justify-center">
             {bookingConfig.hospitableWidgetScriptSrc.trim() ? (
               <div className="w-full">
-                {bookingConfig.hospitableMpsIdentifier.trim() && (
-                  <div
-                    className="sr-only"
-                    aria-hidden="true"
-                    dangerouslySetInnerHTML={{
-                      __html: `<hospitable-direct-mps identifier="${bookingConfig.hospitableMpsIdentifier}" type="custom" data-property-id="${bookingConfig.hospitablePropertyId}" data-site-uuid="${bookingConfig.hospitableSiteUuid}"></hospitable-direct-mps>`,
-                    }}
-                  />
-                )}
                 <div
                   ref={widgetContainerRef}
                   className="hospitable-direct-widget-mount w-full min-h-[160px] flex flex-col items-center justify-center"
