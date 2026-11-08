@@ -246,6 +246,15 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
           <div className="hospitable-widget-wrapper min-h-[240px] flex flex-col justify-center">
             {bookingConfig.hospitableWidgetScriptSrc.trim() ? (
               <div className="w-full">
+                {bookingConfig.hospitableMpsIdentifier.trim() && (
+                  <div
+                    className="sr-only"
+                    aria-hidden="true"
+                    dangerouslySetInnerHTML={{
+                      __html: `<hospitable-direct-mps identifier="${bookingConfig.hospitableMpsIdentifier}" type="custom" data-property-id="${bookingConfig.hospitablePropertyId}" data-site-uuid="${bookingConfig.hospitableSiteUuid}"></hospitable-direct-mps>`,
+                    }}
+                  />
+                )}
                 <div
                   ref={widgetContainerRef}
                   className="hospitable-direct-widget-mount w-full min-h-[160px] flex flex-col items-center justify-center"

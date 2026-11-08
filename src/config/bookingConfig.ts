@@ -58,6 +58,16 @@ export interface BookingConfig {
   hospitableTheme: string;
 
   /**
+   * Option A: Hospitable Direct MPS Custom Element Identifier (`<hospitable-direct-mps identifier="...">`)
+   */
+  hospitableMpsIdentifier: string;
+
+  /**
+   * Option A: Hospitable Direct Widget Script (`https://booking.hospitable.com/widget.js`)
+   */
+  hospitableLegacyWidgetScriptSrc: string;
+
+  /**
    * Option A: Exact raw HTML script snippet for reference or custom embeds
    */
   hospitableCustomEmbedHtml: string;
@@ -101,6 +111,8 @@ export const bookingConfig: BookingConfig = {
   hospitableSiteUuid: 'a32a08d8-459c-43d2-ad01-c71385cf5fc2',
   hospitablePropertyId: '2484575',
   hospitableTheme: 'multi',
+  hospitableMpsIdentifier: 'a93e71b7-0991-4510-810e-0e5662536026',
+  hospitableLegacyWidgetScriptSrc: 'https://booking.hospitable.com/widget.js',
   hospitableCustomEmbedHtml:
     '<script src="https://cdn.hsptb.com/direct-booking-widget/widget-loader.prod.js" data-site-uuid="a32a08d8-459c-43d2-ad01-c71385cf5fc2" data-property-id="2484575" data-theme="multi"></script>',
   hospitableIframeUrl: '',
