@@ -92,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenGallery }) => {
           >
             <Sparkles className="w-4 h-4 text-cedar-light shrink-0" />
             <span className="font-medium">
-              Book Direct with Host Casey &amp; Save ~14% vs. Airbnb Service Fees
+              Book Direct with Host Casey · Save ~12% Compared to Airbnb with $0 Service Fees
             </span>
           </motion.div>
 
@@ -202,7 +202,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenGallery }) => {
             href="#book-direct"
             className="text-xs uppercase tracking-[0.2em] text-amber-200 hover:text-white transition-colors font-semibold"
           >
-            Zero OTA Service Fees · Save $350–$600+ →
+            Save ~12% • $0 Service Fees →
           </a>
         </div>
       </div>

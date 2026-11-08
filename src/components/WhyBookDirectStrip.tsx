@@ -11,9 +11,9 @@ export const WhyBookDirectStrip: React.FC<WhyBookDirectStripProps> = ({ onOpenBo
     {
       icon: Percent,
       title: 'Zero Airbnb Service Fees',
-      subtitle: 'Save $350–$600+ on Group Stays',
+      subtitle: 'Save ~12% • $0 Service Fees',
       description:
-        'Skip the ~14% third-party booking fee and keep more of your budget for group meals and lake adventures.',
+        'Save ~12% compared to Airbnb with $0 service fees—keeping more of your budget for group meals and lake adventures.',
     },
     {
       icon: RefreshCw,
@@ -66,8 +66,8 @@ export const WhyBookDirectStrip: React.FC<WhyBookDirectStripProps> = ({ onOpenBo
                 </h2>
                 <p className="text-stone-300 text-sm sm:text-base mt-1.5 leading-relaxed">
                   Booking directly on our website gives your group the exact same live seasonal
-                  rates, stocked lodge starters, and personal care—without paying $350 to $600+ in
-                  extra Airbnb service fees.
+                  rates, stocked lodge starters, and personal care—saving ~12% compared to Airbnb
+                  with $0 service fees.
                 </p>
               </div>
             </div>
@@ -81,12 +81,12 @@ export const WhyBookDirectStrip: React.FC<WhyBookDirectStripProps> = ({ onOpenBo
               <div className="space-y-2.5 my-3.5 text-sm">
                 <div className="flex items-center justify-between text-stone-300">
                   <span>Airbnb Guest Service Fee</span>
-                  <span className="line-through text-rose-300 font-medium">~14% Markup</span>
+                  <span className="line-through text-rose-300 font-medium">~12% Markup</span>
                 </div>
                 <div className="flex items-center justify-between text-white font-semibold">
                   <span>Direct Booking Service Fee</span>
                   <span className="text-emerald-400 bg-emerald-500/15 px-2.5 py-0.5 rounded-full text-xs">
-                    0% · Save $350–$600+
+                    $0 Service Fees · Save ~12%
                   </span>
                 </div>
               </div>

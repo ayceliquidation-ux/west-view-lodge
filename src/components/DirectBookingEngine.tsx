@@ -210,7 +210,7 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
                 Book Direct with Host {bookingConfig.hostName}
               </span>
               <span className="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
-                Save ~{staySummary.feeSavingsPercent}%
+                Save ~{staySummary.feeSavingsPercent}% • $0 Service Fees
               </span>
             </div>
             <p className="text-xs text-stone-500 flex flex-wrap items-center gap-x-2 gap-y-0.5">
@@ -354,7 +354,7 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
             </h3>
             <p className="text-xs sm:text-sm text-stone-300 mt-1">
               Pricing is 100% synced with our live seasonal calendar. Book directly with Host Casey
-              to waive the ~{staySummary.feeSavingsPercent}% Airbnb service fee markup.
+              to save ~{staySummary.feeSavingsPercent}% compared to Airbnb with $0 service fees.
             </p>
 
             {/* Date Inputs */}
@@ -652,7 +652,7 @@ export const DirectBookingEngine: React.FC<DirectBookingEngineProps> = ({
                   </div>
                   <span className="inline-flex items-center gap-1 font-bold text-emerald-800">
                     <Percent className="w-3.5 h-3.5" />
-                    <span>Save ~{staySummary.feeSavingsPercent}% vs. Airbnb Fees</span>
+                    <span>Save ~{staySummary.feeSavingsPercent}% • $0 Service Fees</span>
                   </span>
                 </div>
 

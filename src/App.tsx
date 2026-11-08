@@ -72,11 +72,11 @@ export function App() {
                 <span>Direct Booking Architecture · Powered by Hospitable</span>
               </div>
               <h2 className="font-serif text-4xl sm:text-5xl font-semibold text-lodge tracking-tight leading-[1.1]">
-                Book Direct with Host Casey &amp; Save ~14%
+                Book Direct with Host Casey &amp; Save ~12%
               </h2>
               <p className="mt-3 text-stone-600 text-base sm:text-lg">
-                Reserve West View Lodge directly below with zero Airbnb guest service fees. Select
-                your dates to calculate your exact group savings and hold your stay.
+                Reserve West View Lodge directly below to save ~12% compared to Airbnb with $0
+                service fees. Select your dates to check live availability and hold your stay.
               </p>
             </div>
 
@@ -96,7 +96,7 @@ export function App() {
         >
           <span className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-cedar-light" />
-            <span>Save ~14% Booking Direct</span>
+            <span>Save ~12% • $0 Service Fees</span>
           </span>
           <span className="bg-cedar px-3.5 py-1.5 rounded-full text-white flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5" />

@@ -105,8 +105,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                 </div>
               </div>
               <p className="text-xs text-stone-300 leading-relaxed mb-3">
-                Skip the ~14% Airbnb service fee markup by booking directly here. Two-way synced
-                calendar via Hospitable Direct.
+                Save ~12% compared to Airbnb with $0 service fees by booking directly here. Two-way
+                synced calendar via Hospitable Direct.
               </p>
               <p className="text-xs text-stone-300 mb-4">
                 Questions? Email{' '}

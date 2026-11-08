@@ -107,7 +107,7 @@ export const bookingConfig: BookingConfig = {
 
   bookingSettings: {
     rateLabel: 'Live Seasonal Rates',
-    airbnbServiceFeePercent: 14,
+    airbnbServiceFeePercent: 12,
     typicalGroupSavingsRange: '$350–$600+',
     minNightsDefault: 3,
     maxGuests: 22,
