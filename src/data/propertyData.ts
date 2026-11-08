@@ -38,31 +38,31 @@ export const WATERCRAFT_LIST = [
     image: '/images/photo-02.jpg',
   },
   {
-    title: '2 Lifetime Paddle Boards',
+    title: 'Kayaks, Paddle Boards & Shoreline',
     badge: 'Included Watercraft',
     description:
-      'Two stable Lifetime stand-up paddle boards with adjustable paddles for morning laps on Big Lake.',
+      'Launch straight from the shoreline with our included double kayaks, kids’ kayaks, and stand-up paddle boards beside the dock and lakeside fire pit.',
     image: '/images/photo-66.jpg',
   },
   {
-    title: '4 Kayaks (2 Double + 2 Kids’)',
-    badge: 'Included Watercraft',
+    title: 'Life Jackets, Wetsuits & Paddles',
+    badge: 'Watercraft Gear',
     description:
-      'Two tandem kayaks plus two kids’ kayaks with adult and youth life jackets organized lakeside.',
+      'Selection of youth and adult life jackets, wetsuits, kayak paddles, and SUP paddles neatly organized under the deck and ready for the lake.',
     image: '/images/photo-56.jpg',
   },
   {
-    title: '4-Person Canopy Paddle Boat',
-    badge: 'Included Watercraft',
+    title: 'Panoramic Outdoor Dining',
+    badge: 'Lakeview Deck',
     description:
-      'Cruise the shoreline in shaded comfort with a 4-seat pedal boat featuring a sun canopy and built-in cooler.',
+      'Enjoy outdoor meals and morning coffee on the upper deck featuring a shaded patio table and sweeping views of Big Lake.',
     image: '/images/photo-21.jpg',
   },
   {
-    title: '6’×12’ Dock & 5’×10’ Water Pad',
-    badge: 'Swim & Lounge',
+    title: '5’×10’ Water Pad, Cornhole & Extra Seating',
+    badge: 'Swim & Lawn Gear',
     description:
-      'Anchor the 6’×12’ inflatable sunbathing island alongside the 5’×10’ foam water pad. Lake towels included.',
+      'Under-deck gear bay stocked with the 5’×10’ floating foam water play pad, cornhole boards, extra lakeside chairs, and water gear.',
     image: '/images/photo-57.jpg',
   },
 ];

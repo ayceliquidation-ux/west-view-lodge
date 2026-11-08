@@ -437,7 +437,7 @@ export const LODGE_PHOTOS: LodgePhoto[] = [
     src: '/images/photo-55.jpg',
     category: 'waterfront',
     title: 'Aerial View of Private Dock & Lakeside Watercraft',
-    caption: 'Private dock with 6’×12’ inflatable sunbathing dock, 4-person canopy paddle boat, kayaks, and paddle boards.',
+    caption: 'Private dock with 6’×12’ inflatable sunbathing dock, 4-person paddle boat, kayaks, and paddle boards.',
     featured: true,
     aspect: 'wide',
   },
