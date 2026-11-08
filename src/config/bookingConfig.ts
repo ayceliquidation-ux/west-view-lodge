@@ -81,8 +81,9 @@ export interface BookingConfig {
   };
 
   /**
-   * External verified review link & host contact details
+   * External verified review link, canonical domain & host contact details
    */
+  siteUrl: string;
   airbnbListingUrl: string;
   hostName: string;
   hostEmail: string;
@@ -112,6 +113,7 @@ export const bookingConfig: BookingConfig = {
     maxGuests: 22,
   },
 
+  siteUrl: 'https://westviewlodgevacation.com',
   airbnbListingUrl: 'https://www.airbnb.com/rooms/1760984114398559371',
   hostName: 'Casey',
   hostEmail: 'westviewlodgevacation@gmail.com',
