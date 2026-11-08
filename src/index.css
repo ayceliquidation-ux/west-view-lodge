@@ -37,3 +37,19 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #B87D4B;
 }
+
+/* Hide any hosting-injected "Powered by Netlify" badge / iframe outside #root */
+a[href*="netlify.com"],
+iframe[src*="netlify"],
+iframe[title*="Netlify" i],
+div[class*="netlify"],
+div[id*="netlify"],
+#netlify-badge,
+[data-netlify-badge] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}

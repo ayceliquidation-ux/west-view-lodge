@@ -11,20 +11,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-alabaster text-lodge font-sans antialiased selection:bg-cedar/20 selection:text-lodge">
-    <!-- Hidden Netlify Form for static detection at build/deploy time -->
-    <form name="west-view-lodge-direct-inquiry" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="fullName" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <input type="text" name="checkIn" />
-      <input type="text" name="checkOut" />
-      <input type="number" name="nights" />
-      <input type="number" name="guests" />
-      <input type="text" name="occasion" />
-      <input type="text" name="estimatedSavings" />
-      <textarea name="message"></textarea>
-    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        function removeNetlifyBadge() {
+          var selectors = [
+            'a[href*="netlify.com"]',
+            'a[href*="netlify.app"][target="_blank"]:not(#root a)',
+            'iframe[src*="netlify"]',
+            'iframe[title*="Netlify" i]',
+            'div[id*="netlify"]',
+            'div[class*="netlify"]',
+            '#netlify-badge',
+            '[data-netlify-badge]'
+          ];
+          selectors.forEach(function (sel) {
+            document.querySelectorAll(sel).forEach(function (el) {
+              if (!el.closest('#root')) {
+                el.style.setProperty('display', 'none', 'important');
+                el.style.setProperty('visibility', 'hidden', 'important');
+                el.style.setProperty('opacity', '0', 'important');
+                el.style.setProperty('pointer-events', 'none', 'important');
+                el.remove();
+              }
+            });
+          });
+        }
+        removeNetlifyBadge();
+        var observer = new MutationObserver(removeNetlifyBadge);
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+      })();
+    </script>
   </body>
 </html>
